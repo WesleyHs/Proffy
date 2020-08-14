@@ -36,7 +36,7 @@
             </div>
         </header>
         <main>
-            <form action="" id="create-class">
+            <form action="/save-classes" id="create-class" method="POST">
                 <fieldset>
                     <legend>Seus dados</legend>
 
@@ -67,16 +67,17 @@
                     <div class="select-block">
                         <label for="subject">Matéria</label>
                         <select name="subject" id="subject" required>
-                            {%for subject in subjects %}
+                            <option value="">Selecione uma opção</option>
+                            {% for subject in subjects %}
                             <option value="{{loop.index}}">
                                 {{subject}}
                             </option>
-                            {%endfor%}
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div class="input-block">
-                        <label for="cos">Custo da sua hora/aula 
+                        <label for="cos">Custo da sua hora/aula
                             <small>(R$)</small>
                         </label>
                         <input name="cost" type="cost" id="cost" type="number" required>
@@ -91,24 +92,22 @@
                         <div class="select-block">
                             <label for="weekday">Dia da Semana</label>
                             <select name="weekday[]" required>
-                                <option value="" disabled="" hidden="">Selecione uma opção</option>
-
-                                {%for weekday in weekdays %}
+                                {% for weekday in weekdays %}
                                 <option value="{{loop.index0}}">
                                     {{weekday}}
                                 </option>
-                                {%endfor%}
+                                {% endfor %}
                             </select>
                         </div>
 
 
                         <div class="input-block">
                             <label for="time_from">Das</label>
-                            <input type="time" id="time_from" name="time_from[]" required>
+                            <input type="time" name="time_from[]" required>
                         </div>
                         <div class="input-block">
-                            <label for="time_to">Das</label>
-                            <input type="time" id="time_to" name="time_to[]" required>
+                            <label for="time_to">Até</label>
+                            <input type="time" name="time_to[]" required>
                         </div>
                     </div>
 
